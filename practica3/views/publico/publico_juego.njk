@@ -1,0 +1,29 @@
+{% extends "publico/publico_base.njk" %}
+{% block titulo %} {{juego.nombre}} {% endblock %}
+ {% block contenido%}
+ <div class="card mx-auto" style="width: 85%;">
+
+  <div class="card-body">
+<h3> {{juego.imagen}} </h3>
+    <h5 class="card-title ">Nombre: {{juego.nombre}}</h5>
+     <div class="col-auto" >Descripcion: {{ juego.descripcion }} </div>
+     <div class="col-auto" >Edad: {{ juego.edad }} </div>
+     {% if (juego.ediciones)%}
+     <div class="col-auto" >
+      Ediciones:
+      {%for edicion in juego.ediciones%}
+      <li>Nombre de la edición: {{edicion.nombre}}</li>
+      <li>Año de la edición:{{edicion.anyo}}</li>
+      {%endfor%}
+        </div>
+        {%endif%}
+     <div class="col-auto" >Número de jugadores: {{ juego.jugadores }} </div>
+     <div class="col-auto" >Tipo: {{ juego.tipo }} </div>
+     <div class="col-auto" >Precio: {{ juego.precio }} Euros </div>             
+
+</div>
+
+  <img  src='/images/{{juego.img}}'>
+
+{% endblock %}
+</body>

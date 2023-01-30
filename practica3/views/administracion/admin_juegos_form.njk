@@ -1,0 +1,188 @@
+{% extends "administracion/admin_base.njk" %}
+{% block titulo %}buscador{% endblock %}
+{% block contenido %}
+
+ {%if (juegos==undefined)%}
+
+   <div class="container form-container">
+            <h3 class="h3 mx-auto w-75 text-center">Insertar </h3>
+   <div>
+                
+ <form action="/juegos/" method="post" enctype="multipart/form-data">
+  
+  <div class="form-outline mb-4">
+  
+   <label class="form-label" for="form4Example1">nombre</label>
+   <input type="text"  class="form-control" name="nombre" />
+   
+  </div>
+
+  
+
+ 
+  <div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">edad</label>
+   <input type="text" class="form-control"  name="edad" />
+   
+  </div>
+
+<div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">jugadores</label>
+   <input type="text" class="form-control"  name="jugadores" />
+   
+  </div>
+ 
+ <div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">precio</label>
+   <input type="text" class="form-control"  name="precio" />
+   
+  </div>
+  <div class="form-outline mb-4">
+     <label class="form-label" for="tipo">tipo</label>
+
+ <select class="form-select" id="tipo" name="tipo" >
+    <option value="rol">
+      rol
+    </option>
+    
+    <option value="escape">
+    escape
+
+    </option>
+   
+    <option value="dados">
+    dados
+    </option>
+
+   <option value="fichas">
+    fichas
+    </option>
+
+    <option value="cartas">
+    cartas
+    </option>
+
+    <option value="tablero">
+    tablero
+    </option>
+
+  </select>
+<label class="form-label" for="descripcion">descripcion</label>
+<div class="form-outline my-4">
+<textarea name="descripcion" id="descripcion" placeholder="descripción" class="form-control"></textarea>
+</div>
+
+<div>
+
+<label class="form-label" for="img">insertar imagen</label>
+<input class="form-control" type="file" id="file" name="img"/>
+
+
+
+</div>
+
+  <button type="submit" class="btn btn-danger btn-block mb-4 mx-auto">Send</button>
+  </div>
+
+
+</form>
+            </div>
+
+            <p>
+   
+{%else%}
+
+
+<div class="container">
+            <h3 class="h3 mx-auto w-75 text-center">editar juego.</h3>
+   <div>
+                
+ <form action="/juegos/{{juegos.id}}" method="post"   >
+  
+  <div class="form-outline mb-4">
+  
+   <label class="form-label" for="form4Example1">nombre</label>
+   <input type="text"  class="form-control" name="nombre"  value="{{juegos.nombre}}"/>
+   
+  </div>
+
+  
+
+   
+  </div>
+
+ 
+  <div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">edad</label>
+   <input type="text" class="form-control"  name="edad"  value="{{juegos.edad}}"/>
+   
+  </div>
+
+<div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">jugadores</label>
+   <input type="text" class="form-control"  name="jugadores"  value="{{juegos.jugadores}}" />
+   
+  </div>
+ 
+ <div class="form-outline mb-4">
+   <label class="form-label" for="form4Example2">precio</label>
+   <input type="text" class="form-control"  name="precio"  value="{{juegos.precio}}" />
+   
+  </div>
+
+ <div class="form-outline mb-4">
+  <label class="form-label" for="tipo">tipo</label>
+ <select class="form-control" id="inlineFormCustomSelectPref">
+  
+   
+    <option value="rol">
+      rol
+    </option>
+    
+    <option value="escape">
+    escape
+
+    </option>
+   
+    <option value="dados">
+    dados
+    </option>
+
+   <option value="fichas">
+    fichas
+    </option>
+
+    <option value="cartas">
+    cartas
+    </option>
+
+    <option value="tablero">
+    tablero
+    </option>
+
+  </select>
+
+  </div>
+
+<label class="form-label" for="descripcion">descripcion</label>
+<div class="form-outline my-4">
+<textarea  class="form-control" name="descripcion" id="descripcion" placeholder="descripción" class="form-control"> {{juegos.descripcion}}</textarea>
+</div>
+
+<label class="form-label" for="img">insertar imagen</label>
+
+<input  class="form-control" type="file" id="file" name="img"/>
+<a class="btn btn-danger btn-block mt-5" href="/juegos/editar/edicion/63c5686451a3607bc2ca7786/"> edicion</a>
+<button type="submit" class="btn btn-danger mt-5">Send</button>
+</div>
+
+
+</form>
+{%endif%}
+
+
+
+
+{% endblock %}
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+</body>

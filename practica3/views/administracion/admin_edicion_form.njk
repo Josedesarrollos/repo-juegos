@@ -1,0 +1,80 @@
+{% extends "administracion/admin_base.njk" %}
+{% block titulo %}buscador{% endblock %}
+{% block contenido %}
+
+ {%if (ediciones)%}
+<h3>Ediciones</h3>
+{%for edicion in ediciones%}
+
+
+<div class="container form-container">
+  <form action="/juegos/editar/edicion/{{idjuego}}/{{edicion.id}}" method="get">
+<ul>
+  <li class="list-group-item">{{edicion.nombre}}, {{edicion.anyo}} <button  class="btn btn-warning" type="submit">editar</button> </li>
+</ul>
+
+</form>
+  
+  </div>
+
+
+{% endfor %}    
+
+{%endif%}
+
+ {%if (edicionEditar)%}
+<h1>editar edicion</h1>
+
+<div class="container  form-container">
+<form action="/juegos/editar/edicion/{{idjuego}}" method="POST">
+  
+  <div class="form-outline mb-4">
+ 
+   
+   <label class="form-label" for="form4Example1">Nombre</label>
+   <input type="text"  class="form-control" name="nombre" value="{{edicionEditar.nombre}}"/>
+   
+  </div>
+
+<div class="form-outline mb-4">
+
+   <label class="form-label" for="form4Example2">Año</label>
+   <input type="text" class="form-control"  name="anyo" value="{{edicionEditar.anyo}}" />
+   
+  </div>
+ 
+  <button type="submit" class="btn btn-primary btn-block mb-4">Editar Edicion</button>
+
+</form>
+
+{%else%}
+<h1>crear edicion</h1>
+
+<div class="container  form-container">
+<form action="/juegos/editar/edicion/{{idjuego}}" method="POST">
+  
+  <div class="form-outline mb-4">
+ 
+   
+   <label class="form-label" for="form4Example1">Nombre</label>
+   <input type="text"  class="form-control" name="nombre" />
+   
+  </div>
+
+<div class="form-outline mb-4">
+
+   <label class="form-label" for="form4Example2">Año</label>
+   <input type="text" class="form-control"  name="anyo"  />
+   
+  </div>
+ 
+  <button type="submit" class="btn btn-primary btn-block mb-4">Crear edicion</button>
+
+</form>
+{%endif%}
+
+
+
+{% endblock %}
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+</body>
