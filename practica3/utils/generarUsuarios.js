@@ -12,7 +12,8 @@ Usuario.find().then(resultado => {
    if(resultado.length>0)
    {
 
-console.log("prueba");
+
+
    }
    else
    {
