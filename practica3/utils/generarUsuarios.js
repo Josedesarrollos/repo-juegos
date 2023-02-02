@@ -1,24 +1,45 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Usuario = require(__dirname + '/../models/usuario');
-
+mongoose.connect('mongodb://127.0.0.1:27017/juegosPracticaFinal');
 
 //usuario 1:
 
 //encriptar contraseña
 
-pass="12345678";
-const saltRounds = 10;
 
-bcrypt.hash(pass, saltRounds, function(err, hash) {
+Usuario.find().then(resultado => {
+   if(resultado.length>0)
+   {
+
+console.log("prueba");
+   }
+   else
+   {
+
+    pass="12345678";
+    const saltRounds = 10;
+    
+    bcrypt.hash(pass, saltRounds, function(err, hash) {
+      
+        let usu1 = new Usuario({
+            login: 'maycalle',
+            password: hash
+           });
+           usu1.save();
+    
+    })
+
+
+   }
   
-    let usu1 = new Usuario({
-        login: 'maycalle',
-        password: hash
-       });
-       usu1.save();
 
-})
+
+
+}).catch (error => {
+    console.log("ERROR:", error);
+   });
+   
 
 
 
